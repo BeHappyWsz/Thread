@@ -30,7 +30,7 @@ class User{
 public class StopThread extends Thread{
 	public static User u = new User();
 	
-	class ReadThread extends Thread{
+	class ReadThread extends Thread{//读线程
 		@Override
 		public void run() {
 			while(true) {
@@ -45,7 +45,7 @@ public class StopThread extends Thread{
 		}
 	}
 	
-	class ChangeThread extends Thread{
+	class ChangeThread extends Thread{//写线程
 		volatile boolean stopThread = false;
 		
 		public void stopme() {
@@ -83,7 +83,7 @@ public class StopThread extends Thread{
 			Thread t = new StopThread().new ChangeThread();
 			t.start();
 //			t.stop();//强制停止,将导致数据不一致
-			((ChangeThread) t).stopme();
+			((ChangeThread) t).stopme();//自定义标识法控制线程的结束
 			count--;
 		}
 	}
