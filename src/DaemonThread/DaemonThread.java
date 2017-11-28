@@ -29,7 +29,7 @@ public class DaemonThread {
 		t.setDaemon(true);
 		t.start();
 //		t.setDaemon(true);  //出现异常，且不会终止，将一直打印。
-		t.sleep(2000);
+		Thread.sleep(2000);
 	}
 
 }
